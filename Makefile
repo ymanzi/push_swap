@@ -10,18 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 NAME = lib.a
 CFLAGS = -Wall -Werror -Wextra
-SRCS = argv_to_array.c free_array.c ft_is_all_digit.c \
-	push.c reverse_rotate.c rotate.c swap.c check.c
+SRCS = srcs/argv_to_array.c srcs/free_array.c srcs/ft_is_all_digit.c \
+	srcs/push.c srcs/reverse_rotate.c srcs/rotate.c srcs/swap.c srcs/check.c \
+	srcs/quick_sort.c srcs/checker.c srcs/utils.c srcs/get_set.c \
+	srcs/closest_and_move.c
 
 LFT_SRC = libft
 LIBFT = $(LFT_SRC)/libft.a
 OBJ = $(SRCS:.c=.o)
  
 all: $(LIBFT) $(NAME)
-	$(CC) $(CFLAGS) checker.c lib.a -o test
+	$(CC) $(CFLAGS) srcs/main_checker.c lib.a -o checker
+	$(CC) $(CFLAGS) push_swap.c lib.a -o push_swap
 
 $(NAME): $(OBJ)
 		cp $(LIBFT) $(NAME)
@@ -32,10 +35,11 @@ $(LIBFT):
 clean:
 		rm -f $(OBJ) 
 		(cd $(LFT_SRC) && $(MAKE) $@)
-
-fclean: clean
+fclean:
+		rm -f $(OBJ)
 		rm -f $(NAME)
-		rm -f minishell
+		rm -f checker
+		rm -f push_swap
 		(cd $(LFT_SRC) && $(MAKE) $@)
 re: fclean all
 

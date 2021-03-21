@@ -18,7 +18,7 @@ void	ra(t_array *array)
 	if (stack_size > 1)
 	{
 		while (++i < stack_size)
-			ft_swap(0, stack + i);
+			ft_swap(stack, stack + i);
 	}
 }
 
@@ -40,7 +40,7 @@ void	rb(t_array *array)
 	if (stack_size > 1)
 	{
 		while (++i < stack_size)
-			ft_swap(0, stack + i);
+			ft_swap(stack, stack + i);
 	}
 }
 
