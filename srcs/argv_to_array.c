@@ -2,7 +2,6 @@
 
 int		get_nbr_chunck(int size)
 {
-
 	if (size < 100)
 		return (4);
 	else if (size < 500)
