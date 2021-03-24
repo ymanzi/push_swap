@@ -27,6 +27,8 @@ void	push_swap_algo(t_array *ar)
 				}
 				else
 					make_move(1, "ra", ar);
+				// if (closest_nbr_from_chunk_top(ar, i_chunck - j, 'a') == -1)
+				// 	break ;
 			}
 		}
 	}

@@ -94,6 +94,7 @@ int				get_chunck_from_number(t_array *ar, int value);
 int				get_minmax(t_array *ar, char i_stack, char *kind);
 void			bring_num_above(t_array *ar, char *kind, char i_stack);
 
+int		max_or_min(t_array *ar);
 /*
 ** Utils.c
 */

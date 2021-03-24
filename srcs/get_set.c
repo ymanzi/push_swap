@@ -75,3 +75,17 @@ void	bring_num_above(t_array *ar, char *kind, char i_stack)
 	else
 		make_move(ar->size_stack_b - nbr_move, "rrb", ar);
 }
+
+int		max_or_min(t_array *ar)
+{
+	int	min_move;
+	int	max_move;
+
+	max_move = move_from_top(ar, get_minmax(ar, 'b', "max"), 'b');
+	if (max_move > ar->size_stack_b / 2)
+		max_move = ar->size_stack_b - max_move;
+	min_move = move_from_top(ar, get_minmax(ar, 'b', "min"), 'b');
+	if (min_move > ar->size_stack_b / 2)
+		min_move = ar->size_stack_b - min_move;
+	return (min_move < max_move ? 0: 1);
+}
