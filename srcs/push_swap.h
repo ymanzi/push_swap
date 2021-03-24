@@ -83,6 +83,7 @@ void			show_stack(t_array *array);
 int				closest_nbr_from_chunk_top(t_array *ar, int i_chunck, char i_stack);
 int				closest_nbr_from_chunk_bottom(t_array *ar, int i_chunck, char i_stack);
 int				move_from_top(t_array *array, int number, char ind_stack);
+int				move_from_bottom(t_array *array, int number, char ind_stack);
 void			make_move(int times, char *operation, t_array *array);
 
 /*

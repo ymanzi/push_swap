@@ -27,7 +27,7 @@ int		closest_nbr_from_chunk_bottom(t_array *ar, int i_chunck, char i_stack)
 	while (++i < size)
 	{
 		if (get_chunck_from_number(ar, stack[i]) == i_chunck)
-			return (i);
+			return (i + 1);
 	}
 	return (-1);
 }
@@ -44,6 +44,22 @@ int		move_from_top(t_array *array, int number, char ind_stack)
 	{
 		if (stack[size - i - 1] == number)
 			return (i);
+	}
+	return (-1);
+}
+
+int		move_from_bottom(t_array *array, int number, char ind_stack)
+{
+	int	i;
+	int	size;
+	int	*stack;
+
+	i = -1;
+	set_stack_and_size(array, &stack, &size, ind_stack);
+	while (++i < size)
+	{
+		if (stack[i] == number)
+			return (i + 1);
 	}
 	return (-1);
 }

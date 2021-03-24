@@ -1,35 +1,67 @@
 #include "srcs/push_swap.h"
 
 #include<stdio.h>
+void	bring_number(t_array *ar, int value, char i_stack)
+{
+	int move_top;
+	int	move_bottom;
+
+	move_top = move_from_top(ar, value, i_stack);
+	move_bottom = move_from_bottom(ar, value, i_stack);
+	if (i_stack == 'a')
+		(move_top < move_bottom ? make_move(move_top, "ra", ar): make_move(move_bottom, "rra", ar));
+	else
+		(move_top < move_bottom ? make_move(move_top, "rb", ar): make_move(move_bottom, "rrb", ar));
+}
+
 void	push_swap_algo(t_array *ar)
 {
 	int	i;
-	int	j;
+	int	size_b;
 	int	max_global;
-	int	min_b;
+	int	max_b;
+	int min_b;
 	int i_chunck;
+	int	n_move_top;
+	int	n_move_bottom;
 
 	i_chunck = ar->nbr_chunck + 1;
-	j = 0;
-	max_global = ar->full_sorted[ar->size_stack_a - 1];
+	// size_b = 0;
+	// i = 0;
+	// max_global = ar->full_sorted[ar->size_stack_a - 1];
 	while (--i_chunck > 0)
 	{
-		min_b = ar->full_sorted[ar->chunck[i_chunck - 1]];
-		i = ar->size_stack_a + 1;
+		n_move_top = closest_nbr_from_chunk_top(ar, i_chunck, 'a');
+		n_move_bottom = closest_nbr_from_chunk_bottom(ar, i_chunck, 'a');
+		while (n_move_top > -1)
 		{
-			while (--i)
-			{
-				if (get_chunck_from_number(ar, ar->stack_a[ar->size_stack_a - 1]) == i_chunck)
-					make_move(1, "pb", ar);
-				else
-					make_move(1, "ra", ar);
-			}
+			(n_move_bottom < n_move_top ? make_move(n_move_bottom, "rra", ar): make_move(n_move_top, "ra", ar));
+			make_move(1, "pb", ar);
+			n_move_top = closest_nbr_from_chunk_top(ar, i_chunck, 'a');
+			n_move_bottom = closest_nbr_from_chunk_bottom(ar, i_chunck, 'a');
 		}
-		while (ar->size_stack_b)
-		{
-			bring_num_above(ar, "max", 'b');
-			make_move(1, "pa", ar);
-		}
+		// if (n_move_top == -1)
+		// 	exit(0);
+		// if (i_chunck < ar->nbr_chunck)
+		// 	exit(0);
+		// while (--i)
+		// {
+		// 	if (get_chunck_from_number(ar, ar->stack_a[ar->size_stack_a - 1]) == i_chunck)
+		// 		make_move(1, "pb", ar);
+		// 	// else if (i_chunck < ar->nbr_chunck && ar->stack_a[0] == min_b)
+		// 	// 	break ;
+		// 	else
+		// 		make_move(1, "ra", ar);
+		// }
+		// if (i_chunck < ar->nbr_chunck)
+		// 	bring_number(ar, min_b, 'a');
+		// min_b = get_minmax(ar, 'b', "min");
+		// while (ar->size_stack_b)
+		// {
+		// 	bring_num_above(ar, "max", 'b');
+		// 	make_move(1, "pa", ar);
+		// }
+		// make_move(1, "ra", ar);
 	}
 	exit(0);
 	while (ar->size_stack_b)
