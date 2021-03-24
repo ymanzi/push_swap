@@ -3,36 +3,41 @@
 #include<stdio.h>
 void	push_swap_algo(t_array *ar)
 {
+	int	i;
+	int	j;
+	int	max_global;
+	int	min_b;
 	int i_chunck;
-	int	n_move_top;
-	int	n_move_bottom;
 
-	i_chunck = 0;
-	while (++i_chunck < ar->nbr_chunck + 1)
+	i_chunck = ar->nbr_chunck + 1;
+	j = 0;
+	max_global = ar->full_sorted[ar->size_stack_a - 1];
+	while (--i_chunck > 0)
 	{
-		n_move_top = closest_nbr_from_chunk_top(ar, i_chunck, 'a');
-		n_move_bottom = closest_nbr_from_chunk_bottom(ar, i_chunck, 'a') + 1;
-// printf("top=%d bot=%d\n", n_move_top, n_move_bottom);
-// show_stack(ar);
-		while ((n_move_top < n_move_bottom ? n_move_top : n_move_bottom) > -1)
+		min_b = ar->full_sorted[ar->chunck[i_chunck - 1]];
+		i = ar->size_stack_a + 1;
 		{
-			if (n_move_top < n_move_bottom)
-				make_move(n_move_top, "ra", ar);
-			else
-				make_move(n_move_bottom, "rra", ar);
+			while (--i)
+			{
+				if (get_chunck_from_number(ar, ar->stack_a[ar->size_stack_a - 1]) == i_chunck)
+					make_move(1, "pb", ar);
+				else
+					make_move(1, "ra", ar);
+			}
+		}
+		while (ar->size_stack_b)
+		{
 			bring_num_above(ar, "max", 'b');
-// show_stack(ar);
-			make_move(1, "pb", ar);
-// show_stack(ar);
-			n_move_top = closest_nbr_from_chunk_top(ar, i_chunck, 'a');
-			n_move_bottom = closest_nbr_from_chunk_bottom(ar, i_chunck, 'a') + 1;
+			make_move(1, "pa", ar);
 		}
 	}
+	exit(0);
 	while (ar->size_stack_b)
 	{
 		bring_num_above(ar, "max", 'b');
 		make_move(1, "pa", ar);
 	}
+	exit(0);
 }
 
 void	one_arg(char *str, t_array **array)
