@@ -20,19 +20,22 @@ int		one_arg(t_array **array, char *str)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+void	end(t_array *array, char *line)
+{
+	if (check_sorted(array))
+		write(1, "OK\n", 3);
+	else
+		write(1, "K0\n", 3);
+	error_handling(array, line, 0);
+}
+
+int		first_part(int argc, char **argv, char *line, int ret)
 {
 	t_array	*array;
-	char	*line;
-	int		ret;
 
-	array = 0;
-	line = 0;
-	if (argc == 1)
-		return (0);
 	if (argc == 2 && just_digit_and_space(argv[1]))
 	{
-		if (one_arg(&array, argv[1]) == -1)
+		if (!one_arg(&array, argv[1]))
 			return (0);
 	}
 	else
@@ -47,8 +50,19 @@ int		main(int argc, char **argv)
 		make_operation_on_array(array, line);
 		free(line);
 	}
-	check_sorted(array);
-	// show_stack(array);
-	error_handling(array, line, 0);
-	return (0);
+	end(array, line);
+	return (1);
+}
+
+int		main(int argc, char **argv)
+{
+	t_array	*array;
+	char	*line;
+	int		ret;
+
+	array = 0;
+	line = 0;
+	if (argc == 1)
+		return (0);
+	return (first_part(argc, argv, line, ret));
 }

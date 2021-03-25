@@ -24,7 +24,7 @@ void	set_chunck(t_array *array)
 	step = full_size / array->nbr_chunck;
 	while (++j < array->nbr_chunck)
 		array->chunck[j] = j * step;
-	array->chunck[j] = full_size + 1;
+	array->chunck[j] = full_size - 1;
 }
 
 int		get_size_argv(char **tab)
@@ -32,7 +32,7 @@ int		get_size_argv(char **tab)
 	int	i;
 
 	i = -1;
-	while(tab[++i])
+	while (tab[++i])
 		;
 	return (i);
 }
@@ -48,10 +48,7 @@ t_array	*argv_to_array(int argc, char **argv)
 	|| !(ar->full_sorted = (int*)malloc(sizeof(int) * (argc - 1)))
 	|| !(ar->chunck = (int*)malloc(sizeof(int) * (argc - 1)))
 	|| !(ar->stack_b = (int*)malloc(sizeof(int) * (argc - 1))))
-	{
-		write(1, "lol", 3);
 		return (0);
-	}
 	ar->size_stack_a = argc - 1;
 	ar->size_stack_b = 0;
 	while (++i < argc)

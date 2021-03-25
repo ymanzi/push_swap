@@ -74,7 +74,7 @@ int				order_pivot(int *tab, int left, int right);
 */
 void			make_operation_on_array(t_array *array, char *operation);
 int				error_handling(t_array *array, char *line, int ind);
-void			check_sorted(t_array *array);
+int				check_sorted(t_array *array);
 void			show_stack(t_array *array);
 
 /*
@@ -93,12 +93,16 @@ void			set_stack_and_size(t_array *ar, int **stack, int *size, char ind_stack);
 int				get_chunck_from_number(t_array *ar, int value);
 int				get_minmax(t_array *ar, char i_stack, char *kind);
 void			bring_num_above(t_array *ar, char *kind, char i_stack);
-
-int		max_or_min(t_array *ar);
+int				max_or_min(t_array *ar);
 /*
 ** Utils.c
 */
 int				just_digit_and_space(char *str);
 void			free_double_tab(char **tab);
+/*
+** sort_3_5.c
+*/
+void			sort_3(t_array *ar);
+void			sort_5(t_array *ar);
 
 #	endif

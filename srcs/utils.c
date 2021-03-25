@@ -18,7 +18,7 @@ void	free_double_tab(char **tab)
 	int	i;
 
 	i = -1;
-	while(tab[++i])
+	while (tab[++i])
 		free(tab[i]);
 	free(tab);
 }

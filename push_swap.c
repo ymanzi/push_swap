@@ -1,43 +1,52 @@
 #include "srcs/push_swap.h"
 
-#include<stdio.h>
-void	push_swap_algo(t_array *ar)
+void	from_a_to_b(t_array *ar, int j, int i_chunck)
 {
 	int	i;
-	int	j;
-	int	max_global;
-	int	min_b;
-	int i_chunck;
 
-	i_chunck = ar->nbr_chunck + 1;
-	j = 0;
-	max_global = ar->full_sorted[ar->size_stack_a - 1];
-	while (i_chunck - ++j > 0)
+	while (i_chunck - ++j >= 0)
 	{
 		i = ar->size_stack_a + 1;
 		{
 			while (--i)
 			{
-				if (get_chunck_from_number(ar, ar->stack_a[ar->size_stack_a - 1]) == i_chunck - j)
+				if (get_chunck_from_number(ar,
+				ar->stack_a[ar->size_stack_a - 1]) == i_chunck + j - 1)
 					make_move(1, "pb", ar);
-				else if (get_chunck_from_number(ar, ar->stack_a[ar->size_stack_a - 1]) == j)
+				else if (get_chunck_from_number(ar,
+				ar->stack_a[ar->size_stack_a - 1]) == i_chunck - j)
 				{
 					make_move(1, "pb", ar);
 					make_move(1, "rb", ar);
 				}
 				else
 					make_move(1, "ra", ar);
-				// if (closest_nbr_from_chunk_top(ar, i_chunck - j, 'a') == -1)
-				// 	break ;
 			}
 		}
 	}
+}
+
+void	push_swap_algo(t_array *ar)
+{
+	from_a_to_b(ar, 0, ar->nbr_chunck / 2 + 2);
+	bring_num_above(ar, "min", 'a');
 	while (ar->size_stack_b)
 	{
 		bring_num_above(ar, "max", 'b');
 		make_move(1, "pa", ar);
 	}
-	// exit(0);
+}
+
+void	main_process(t_array *ar)
+{
+	if (check_sorted(ar))
+		return ;
+	if (ar->size_stack_a == 3)
+		sort_3(ar);
+	else if (ar->size_stack_a == 5)
+		sort_5(ar);
+	else
+		push_swap_algo(ar);
 }
 
 void	one_arg(char *str, t_array **array)
@@ -57,9 +66,7 @@ void	one_arg(char *str, t_array **array)
 		error_handling(*array, 0, 1);
 		return ;
 	}
-	if ((*array)->size_stack_a > 1)
-		push_swap_algo(*array);
-	// show_stack(array);
+	main_process(*array);
 	free_double_tab(tab_arg);
 	error_handling(*array, 0, 0);
 }
@@ -78,9 +85,7 @@ int		main(int argc, char **argv)
 		if (!(check_argv(argc, argv))
 		|| !(array = argv_to_array(argc, argv)))
 			return (error_handling(array, 0, 1));
-		if (array->size_stack_a > 1)
-			push_swap_algo(array);
-		// show_stack(array);
+		main_process(array);
 		error_handling(array, 0, 0);
 	}
 	return (0);
