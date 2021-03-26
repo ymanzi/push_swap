@@ -39,10 +39,10 @@ Create two programs: ``checker`` and ``push_swap``.
 The simplest approach is to find the biggest number in stack A move it to stack B, and do it again and again until the stack is empty. Push All the stack B back to A and we would have the numbers sorted from biggest to smallest. This way works but it's inneficient.
 
 Let's say i have a **random list** of 100 numbers from 0-99. Instead of sorting a big chunck of 100 numbers, it's better to sort 4 chuncks of 25 numbers.
-* step 1: divide the big list in 4 chuncks( chunk 1 are numbers from 0-24, chunk 2: 25-49, chunck 3: 51-74, chunck 4: 75-99)
-* step 2: Look for all the numbers from chunck 1 and move them to Stack B. Repeat until all the chuncks are in stack B.
-* step 3: Push the maximum of the stack B to A, repeat until all the numbers are back to A.
-* step 4: It's over. Your stack should be sorted
+* **step 1**: divide the big list in 4 chuncks (chunk 1 are numbers from 0-24, chunk 2: 25-49, chunck 3: 51-74, chunck 4: 75-99)
+* **step 2**: Look for all the numbers from chunck 1 and move them to Stack B. Repeat until all the chuncks are in stack B.
+* **step 3**: Push the maximum of the stack B to A, repeat until all the numbers are back to A.
+* **step 4**: It's over. Your stack should be sorted
 
 ### Upgrade
 * Instead of moving one chunck a time, move the smallest chunck and the biggest one at once
