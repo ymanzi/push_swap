@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 10:01:27 by ymanzi            #+#    #+#             */
+/*   Updated: 2021/03/26 10:07:44 by ymanzi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #	ifndef PUSH_SWAP_H
 #	define PUSH_SWAP_H
 
@@ -80,8 +92,10 @@ void			show_stack(t_array *array);
 /*
 ** Closest_and_move.c
 */
-int				closest_nbr_from_chunk_top(t_array *ar, int i_chunck, char i_stack);
-int				closest_nbr_from_chunk_bottom(t_array *ar, int i_chunck, char i_stack);
+int				closest_nbr_from_chunk_top(t_array *ar,
+					int i_chunck, char i_stack);
+int				closest_nbr_from_chunk_bottom(t_array *ar,
+					int i_chunck, char i_stack);
 int				move_from_top(t_array *array, int number, char ind_stack);
 int				move_from_bottom(t_array *array, int number, char ind_stack);
 void			make_move(int times, char *operation, t_array *array);
@@ -89,7 +103,8 @@ void			make_move(int times, char *operation, t_array *array);
 /*
 **	Get_set.c
 */
-void			set_stack_and_size(t_array *ar, int **stack, int *size, char ind_stack);
+void			set_stack_and_size(t_array *ar,
+					int **stack, int *size, char ind_stack);
 int				get_chunck_from_number(t_array *ar, int value);
 int				get_minmax(t_array *ar, char i_stack, char *kind);
 void			bring_num_above(t_array *ar, char *kind, char i_stack);

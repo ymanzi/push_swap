@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 10:04:32 by ymanzi            #+#    #+#             */
+/*   Updated: 2021/03/26 10:04:34 by ymanzi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		one_arg(t_array **array, char *str)
@@ -33,6 +45,7 @@ int		first_part(int argc, char **argv, char *line, int ret)
 {
 	t_array	*array;
 
+	array = NULL;
 	if (argc == 2 && just_digit_and_space(argv[1]))
 	{
 		if (!one_arg(&array, argv[1]))
@@ -56,12 +69,11 @@ int		first_part(int argc, char **argv, char *line, int ret)
 
 int		main(int argc, char **argv)
 {
-	t_array	*array;
 	char	*line;
 	int		ret;
 
-	array = 0;
 	line = 0;
+	ret = 0;
 	if (argc == 1)
 		return (0);
 	return (first_part(argc, argv, line, ret));

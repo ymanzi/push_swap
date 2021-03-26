@@ -1,4 +1,16 @@
-#include "srcs/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 10:00:02 by ymanzi            #+#    #+#             */
+/*   Updated: 2021/03/26 10:00:04 by ymanzi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	from_a_to_b(t_array *ar, int j, int i_chunck)
 {
@@ -41,8 +53,17 @@ void	main_process(t_array *ar)
 {
 	if (check_sorted(ar))
 		return ;
-	if (ar->size_stack_a == 3)
+	if (ar->size_stack_a == 2)
+		make_move(1, "ra", ar);
+	else if (ar->size_stack_a == 3)
 		sort_3(ar);
+	else if (ar->size_stack_a == 4)
+	{
+		bring_num_above(ar, "min", 'a');
+		make_move(1, "pb", ar);
+		sort_3(ar);
+		make_move(1, "pa", ar);
+	}
 	else if (ar->size_stack_a == 5)
 		sort_5(ar);
 	else

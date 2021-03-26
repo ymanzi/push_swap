@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror 
 SRCS = ft_atoi.c ft_isalpha.c ft_memccpy.c ft_memmove.c ft_strlcat.c \
@@ -25,14 +26,24 @@ get_next_line.c get_next_line_utils.c
 OBJ = $(SRCS:.c=.o)
 OBJ_B = $(SRCS_B:.c=.o)
 
+RED		=	\033[0;31m
+GREEN	=	\033[0;32m
+NC		=	\033[0m
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
+	@echo "$(GREEN)compiling $@...$(NC)"
+	@ar rc $(NAME) $(OBJ)
+
 bonus: all $(OBJ_B)
-		ar rc $(NAME) $(OBJ_B)
+	ar rc $(NAME) $(OBJ_B)
 clean:
-		rm -f $(OBJ) $(OBJ_B)
+	@echo "$(RED)deleting LIBFT objects...$(NC)"
+	@rm -f $(OBJ) $(OBJ_B)
+
 fclean: clean
-		rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)deleting $(NAME)...$(NC)"
+
 re: fclean all

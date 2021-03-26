@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 10:02:11 by ymanzi            #+#    #+#             */
+/*   Updated: 2021/03/26 10:02:28 by ymanzi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		check_double(int argc, char **argv)
@@ -33,6 +45,9 @@ int		check_int_min_max(char *str)
 	if (((str[0] == '+' || str[0] == '-') && ft_strlen(str + 1) < 10)
 		|| ft_strlen(str) < 10)
 		return (1);
+	if (((str[0] == '+' || str[0] == '-') && ft_strlen(str + 1) > 10)
+		|| ft_strlen(str) > 11)
+		return (0);
 	if ((str[0] == '+' && ft_strncmp("2147483647", str + 1, 12) < 0)
 		|| (str[0] == '-' && ft_strncmp("2147483648", str + 1, 12) < 0)
 		|| (ft_isdigit(str[0]) && ft_strncmp("2147483647", str, 12) < 0))

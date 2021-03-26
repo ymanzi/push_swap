@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   argv_to_array.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 10:03:02 by ymanzi            #+#    #+#             */
+/*   Updated: 2021/03/26 10:03:04 by ymanzi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		get_nbr_chunck(int size)
@@ -12,12 +24,10 @@ int		get_nbr_chunck(int size)
 
 void	set_chunck(t_array *array)
 {
-	int	i;
 	int	j;
 	int	step;
 	int	full_size;
 
-	i = -1;
 	j = -1;
 	full_size = array->size_stack_a;
 	array->nbr_chunck = get_nbr_chunck(full_size);
