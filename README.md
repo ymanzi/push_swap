@@ -7,7 +7,7 @@
 ## Challenge
 Sort a random list of integers using the smallest number of moves, 2 stacks and a limited set of operations.
 
-![Push_swapGif](srcs/push_swap.gif)
+<img src="https://github.com/ymanzi/push_swap/blob/main/srcs/push_swap.gif" alt="gif" width=750 height=500>
 
 ## Instruction set
 For the following instructions, if the instruction is not possible, the part of
