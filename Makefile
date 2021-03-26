@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
+#    By: ymanzi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/09 14:05:13 by ymanzi            #+#    #+#              #
-#    Updated: 2021/03/26 13:05:18 by ymanzi           ###   ########.fr        #
+#    Created: 2021/03/26 16:27:32 by ymanzi            #+#    #+#              #
+#    Updated: 2021/03/26 16:27:35 by ymanzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-LIB = srcs/libpush.a
+LIB = libpush.a
 NAME1 = push_swap
 NAME2 = checker
 CFLAGS = -Wall -Werror -Wextra
@@ -28,17 +28,17 @@ LFT_SRC = libft
 LIBFT = $(LFT_SRC)/libft.a
 OBJ = $(SRCS:.c=.o)
  
-all: $(LIBFT) $(LIB) $(NAME1) $(NAME2)
+all: $(NAME1) $(NAME2)
 
 $(LIB): $(OBJ)
 	@ar rc $(LIB) $(OBJ)
 
 $(NAME1): $(LIBFT) $(LIB)
-	@$(CC) $(CFLAGS) $(LIB) $(LIBFT) srcs/push_swap.c -o $(NAME1)
+	@$(CC) $(CFLAGS) srcs/push_swap.c $(LIB) $(LIBFT) -o $(NAME1)
 	@echo "$(GREEN)$@ is ready to test$(NC)"
 
 $(NAME2): $(LIBFT) $(LIB)
-	@$(CC) $(CFLAGS) $(LIB) $(LIBFT) srcs/main_checker.c -o $(NAME2)
+	@$(CC) $(CFLAGS) srcs/main_checker.c $(LIB) $(LIBFT) -o $(NAME2) 
 	@echo "$(GREEN)$@ is ready to test$(NC)"
 
 $(LIBFT):
