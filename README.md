@@ -7,6 +7,8 @@
 ## Challenge
 Sort a random list of integers using the smallest number of moves, 2 stacks and a limited set of operations.
 
+![Push_swapGif](srcs/push_swap.gif)
+
 ## Instruction set
 For the following instructions, if the instruction is not possible, the part of
 it that can't be executed won't.
@@ -45,9 +47,31 @@ Let's say i have a **random list** of 100 numbers from 0-99. Instead of sorting 
 ### Upgrade
 * Instead of moving one chunck a time, move the smallest chunck and the biggest one at once
 
+## Usage
+Run ```make```.
 
+The **checker** program is used as follows:
+```c
+  ./checker 5 2 3 1 4
+```
+```c
+  ./checker "-50 -400 -20 -1 -100"
+```
+```c
+  ./checker "-22" "35" "40" "-15" "75"
+```
 
-ARG=`ruby -e "puts (0..4).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-ARG=`ruby -e "puts (-25..74).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
+The **push_swap** program is used in the same way
+```c
+  ./push_swap 5 2 3 1 4
+```
 
-python3 pyviz.py `ruby -e "puts (1..99).to_a.shuffle.join(' ')"`
+You can run the two together using:
+```c
+  ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
+```
+
+Run the visualizer
+```c
+  python3 pyviz.py `ruby -e "puts (1..99).to_a.shuffle.join(' ')"`
+```
